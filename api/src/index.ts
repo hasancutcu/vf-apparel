@@ -1,20 +1,10 @@
-import express, { Request, Response, NextFunction } from 'express';
-import { json } from 'body-parser';
-import { getProducts } from './db/db';
+import { app } from './app';
 
-const app = express();
+const start = async () => {
+  console.log('starting server...');
+  app.listen(4000, () => {
+    console.log('server started on port 4000');
+  });
+};
 
-app.use(json());
-app.get('/products', async (req, res) => {
-  const products = await getProducts();
-  res.send(products);
-});
-
-app.use((err: Error, req: Request, res: Response, next: NextFunction) => {
-  console.error(err.stack);
-  res.status(500).send('Something broke!');
-});
-
-app.listen(3000, () => {
-  console.log('listening on port 3000!');
-});
+start();

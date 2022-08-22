@@ -5,6 +5,7 @@ import { getProductsRouter } from './routes/get-products';
 const app = express();
 
 app.use(json());
+
 app.use(getProductsRouter);
 
 

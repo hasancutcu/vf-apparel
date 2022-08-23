@@ -1,5 +1,5 @@
 import express from 'express';
-import { readCart, addToCart } from '../services/cart';
+import { readCart, addToCart, removeFromCart } from '../services/cart';
 import { ICart } from '../common/cart';
 import { requireCart } from '../middlewares/cart-required';
 import { findById } from '../db/db';
@@ -37,6 +37,29 @@ router.post('/api/cart/add/:id', requireCart, async (req, res) => {
     addToCart(cart_id, product!);
 
     return res.status(200).send(cart_id);
+  } catch (error) {
+    res.status(500).send(error);
+  }
+});
+
+//remove item from cart
+router.post('/api/cart/remove/:id', requireCart, async (req, res) => {
+  try {
+    //check product id
+    if (!req.params.id) {
+      return res.status(400).send('Product id is required');
+    }
+    //find product by id
+    const productId = parseInt(req.params.id);
+    const product = await findById(productId);
+
+    //remove product from cart
+    if (!product) {
+      return res.status(400).send('Product not found');
+    }
+    removeFromCart(req.session?.cart_id, product!);
+
+    return res.status(200).send(req.session?.cart_id);
   } catch (error) {
     res.status(500).send(error);
   }

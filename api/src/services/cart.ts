@@ -14,18 +14,11 @@ const readCart = (cart_id: string): ICart => {
   }
 };
 
-//TODO: need to implement cart id
 const addToCart = (cart_id: string, product: IProduct) => {
   let carts: ICart[] = [];
 
-  if (fs.existsSync('carts.json')) {
-    carts = JSON.parse(fs.readFileSync('carts.json', 'utf8'));
-  } else {
-    //TODO: need to remove this when it's sure thing that the carts.json file exists
-    fs.writeFileSync('carts.json', JSON.stringify(carts));
-  }
+  carts = JSON.parse(fs.readFileSync('carts.json', 'utf8'));
 
-  //let cart = carts.find((c) => c.id === cart_id);
   const cartIndex = carts.findIndex((c) => c.id === cart_id);
   //if cart is not found in the carts.json file, create new cart and add product to new cart
   if (cartIndex === -1) {
@@ -65,8 +58,22 @@ const addToCart = (cart_id: string, product: IProduct) => {
   fs.writeFileSync('carts.json', JSON.stringify(carts));
 };
 
-//TODO: need to implement cart id and removing logic
-const removeFromCart = (product: IProduct) => {};
+const removeFromCart = (cart_id: string, product: IProduct) => {
+  let carts: ICart[] = [];
+
+  carts = JSON.parse(fs.readFileSync('carts.json', 'utf8'));
+
+  const cartIndex = carts.findIndex((c) => c.id === cart_id);
+  const cart = carts[cartIndex];
+  const itemIndex = cart.items.findIndex((i) => i.product.id === product.id);
+  //if item is found, remove completely
+  if (itemIndex > -1) {
+    cart.total_amount -= cart.items[itemIndex].amount;
+    cart.items.splice(itemIndex, 1);
+  }
+  carts.splice(cartIndex, 1, cart); // replace the cart with the new cart
+  fs.writeFileSync('carts.json', JSON.stringify(carts));
+};
 
 const generateCartId = (): string => {
   return uuidv4();

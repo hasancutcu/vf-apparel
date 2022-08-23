@@ -1,11 +1,14 @@
 import express from 'express';
 import { json } from 'body-parser';
 import cookieSession from 'cookie-session';
+import cors from 'cors';
 //Routes
 import { getProductsRouter } from './routes/get-products';
 import { cartRouter } from './routes/cart';
 
 const app = express();
+
+app.use(cors());
 
 var enviroment = process.env.NODE_ENV || 'development';
 const useSecureCookies = enviroment === 'production';

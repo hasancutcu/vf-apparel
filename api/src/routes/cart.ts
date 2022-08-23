@@ -1,36 +1,45 @@
 import express from 'express';
-import { readCart } from '../services/cart';
+import { readCart, addToCart } from '../services/cart';
 import { ICart } from '../common/cart';
+import { requireCart } from '../middlewares/cart-required';
+import { findById } from '../db/db';
 
 const router = express.Router();
 
-router.get('/api/cart', async (req, res) => {
+//get cart
+router.get('/api/cart', requireCart, async (req, res) => {
   try {
-    const carts: ICart[] = readCart();
-    res.status(200).send(carts);
+    const cart_id = readCart(req.session?.cart_id);
+    res.status(200).send(cart_id);
   } catch (error) {
     res.status(500).send(error);
   }
 });
 
-router.post('/api/cart', async (req, res) => {
-  let carts: ICart[] = [];
-  //carts = readCart();
+//add item to cart
+router.post('/api/cart/add/:id', requireCart, async (req, res) => {
+  try {
+    //check product id
+    if (!req.params.id) {
+      res.status(400).send('Product id is required');
+    }
 
-  // try {
-  //   if (fs.existsSync('carts.json')) {
-  //     carts = JSON.parse(fs.readFileSync('carts.json', 'utf8'));
-  //   } else {
-  //     fs.writeFileSync('carts.json', JSON.stringify(carts));
-  //   }
-  //   carts.push(cart);
-  //   fs.writeFileSync('carts.json', JSON.stringify(carts));
-  //   res.status(200).send(carts);
-  // } catch (error) {
-  //   return res.status(500).send(error);
-  // }
+    const cart_id = req.session?.cart_id;
 
-  return res.status(200).send('OK');
+    //find product by id
+    const productId = parseInt(req.params.id);
+    const product = await findById(productId);
+
+    //add product to cart
+    if (!product) {
+      res.status(400).send('Product not found');
+    }
+    addToCart(cart_id, product!);
+
+    return res.status(200).send(cart_id);
+  } catch (error) {
+    res.status(500).send(error);
+  }
 });
 
 export { router as cartRouter };

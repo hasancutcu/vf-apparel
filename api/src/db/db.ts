@@ -15,4 +15,11 @@ const getProducts = async (): Promise<IProduct[]> => {
   }
 };
 
-export { getProducts };
+const findById = async (productId: number): Promise<IProduct | undefined> => {
+  const products = await getProducts();
+  const product =
+    products.find((product) => product.id === productId) || undefined;
+  return product;
+};
+
+export { getProducts, findById };

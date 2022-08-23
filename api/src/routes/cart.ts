@@ -9,8 +9,8 @@ const router = express.Router();
 //get cart
 router.get('/api/cart', requireCart, async (req, res) => {
   try {
-    const cart_id = readCart(req.session?.cart_id);
-    res.status(200).send(cart_id);
+    const cart = readCart(req.session?.cart_id);
+    res.status(200).send(cart);
   } catch (error) {
     res.status(500).send(error);
   }
@@ -21,7 +21,7 @@ router.post('/api/cart/add/:id', requireCart, async (req, res) => {
   try {
     //check product id
     if (!req.params.id) {
-      res.status(400).send('Product id is required');
+      return res.status(400).send('Product id is required');
     }
 
     const cart_id = req.session?.cart_id;
@@ -32,7 +32,7 @@ router.post('/api/cart/add/:id', requireCart, async (req, res) => {
 
     //add product to cart
     if (!product) {
-      res.status(400).send('Product not found');
+      return res.status(400).send('Product not found');
     }
     addToCart(cart_id, product!);
 

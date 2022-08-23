@@ -25,7 +25,7 @@ interface IProductVariant {
   taxable: boolean;
   featured_image: IProductImage;
   available: boolean;
-  price: number;
+  price: string;
   grams: number;
   compare_at_price: number | null;
   position: number;

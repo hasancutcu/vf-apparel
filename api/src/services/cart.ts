@@ -28,10 +28,10 @@ const addToCart = (cart_id: string, product: IProduct) => {
         {
           product: product,
           quantity: 1,
-          amount: parseFloat(product.variants[0].price),
+          amount: product.price,
         },
       ],
-      total_amount: parseFloat(product.variants[0].price),
+      total_amount: product.price,
     };
     carts.push(cart);
   } else {
@@ -41,17 +41,17 @@ const addToCart = (cart_id: string, product: IProduct) => {
     //if item is found, add new increase the qty
     if (itemIndex !== -1) {
       cart.items[itemIndex].quantity++;
-      cart.items[itemIndex].amount += parseFloat(product.variants[0].price);
+      cart.items[itemIndex].amount += product.price;
       cart.items[itemIndex].quantity;
-      cart.total_amount += parseFloat(product.variants[0].price);
+      cart.total_amount += product.price;
     } else {
       //if item is not found, add new item to cart
       cart.items.push({
         product: product,
         quantity: 1,
-        amount: parseFloat(product.variants[0].price),
+        amount: product.price,
       });
-      cart.total_amount += parseFloat(product.variants[0].price);
+      cart.total_amount += product.price;
     }
     carts.splice(cartIndex, 1, cart); // replace the cart with the new cart
   }

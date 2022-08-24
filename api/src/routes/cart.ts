@@ -1,6 +1,5 @@
 import express from 'express';
 import { readCart, addToCart, removeFromCart } from '../services/cart';
-import { ICart } from '../common/cart';
 import { requireCart } from '../middlewares/cart-required';
 import { findById } from '../db/db';
 
@@ -35,7 +34,7 @@ router.post('/api/cart/add/:id', requireCart, async (req, res) => {
       return res.status(400).send('Product not found');
     }
     addToCart(cart_id, product!);
-
+    const cart = readCart(req.session?.cart_id);
     return res.status(200).send(cart_id);
   } catch (error) {
     res.status(500).send(error);

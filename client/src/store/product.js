@@ -1,6 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
 
-const initialProductState = { products: [] };
+const initialProductState = { products: [], sort: 'high_price' };
 
 const productSlice = createSlice({
   name: 'product',
@@ -8,6 +8,9 @@ const productSlice = createSlice({
   reducers: {
     productsReceived(state, action) {
       state.products = action.payload;
+    },
+    sortChanged(state, action) {
+      state.sort = action.payload;
     }
   },
 });

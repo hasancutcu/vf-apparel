@@ -1,17 +1,18 @@
-import Cart from '../features/cart/Cart';
+import Footer from '../features/footer/Footer';
 import Header from '../features/header/Header';
 import Hero from '../features/hero/Hero';
-import ProductGallery from '../features/product/ProductGallery';
+import Body from './Body';
+import Container from 'react-bootstrap/esm/Container';
 
 
 function App() {
   return (
-    <div >
+    <>
       <Header />
       <Hero />
-      <Cart />
-      <ProductGallery />
-    </div>
+      <Body />
+      <Footer />
+    </>
   );
 }
 

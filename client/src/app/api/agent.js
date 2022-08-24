@@ -1,6 +1,7 @@
 import axios from 'axios';
 
 axios.defaults.baseURL = 'http://localhost:4000/api';
+axios.defaults.withCredentials = true;
 
 const responseBody = (response) => response.data;
 
@@ -18,6 +19,10 @@ const Product = {
   getProductByTitleZA: () => requests.get('/products', { params: { sort: 'title_za' } }),
 }
 
-const Agent = { Product }
+const Cart = {
+  getCart: () => requests.get('/cart')
+}
+
+const Agent = { Product, Cart }
 
 export default Agent;

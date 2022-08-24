@@ -1,5 +1,4 @@
-import { useEffect, useState } from 'react'
-import Agent from '../api/agent'
+import Cart from '../features/cart/Cart';
 import Header from '../features/header/Header';
 import Hero from '../features/hero/Hero';
 import ProductGallery from '../features/product/ProductGallery';
@@ -10,6 +9,7 @@ function App() {
     <div >
       <Header />
       <Hero />
+      <Cart />
       <ProductGallery />
     </div>
   );

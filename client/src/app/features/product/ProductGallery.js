@@ -12,7 +12,6 @@ const ProductGallery = () => {
 
   const fetchProducts = async () => {
     const data = await agent.Product.getProductByTitleAZ();
-    console.log(data[0].title);
     dispatch(productActions.productsReceived(data));
   }
 

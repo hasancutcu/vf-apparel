@@ -16,7 +16,7 @@ const createProducts = async () => {
             title: product.title,
             variant_title: product.variants[0].title,
             price: parseFloat(product.variants[0].price),
-            imageSrc: product.images[0].src,
+            image: product.images[0].src,
           };
         }
       );

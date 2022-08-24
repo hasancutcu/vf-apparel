@@ -3,6 +3,6 @@ interface IProduct {
   title: string;
   variant_title: string;
   price: number;
-  imageSrc: string;
+  image: string;
 }
 export { IProduct };

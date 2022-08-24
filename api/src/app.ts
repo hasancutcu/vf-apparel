@@ -3,7 +3,7 @@ import { json } from 'body-parser';
 import cookieSession from 'cookie-session';
 import cors from 'cors';
 //Routes
-import { getProductsRouter } from './routes/get-products';
+import { getProductsRouter } from './routes/product';
 import { cartRouter } from './routes/cart';
 
 const app = express();

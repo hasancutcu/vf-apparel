@@ -5,7 +5,7 @@ function App() {
   const [products, setProducts] = useState([])
 
   const fetchProducts = async () => {
-    const data = await Agent.Product.getProdcutsAsIs();
+    const data = await Agent.Product.getProductByLowestPrice();
     setProducts(data)
   }
 

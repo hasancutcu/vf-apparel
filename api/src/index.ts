@@ -1,15 +1,25 @@
 import { app } from './app';
 import fs from 'fs';
+import { createProducts } from './db/db';
 
-const initJsonFile = async () => {
+const initJsonFiles = async () => {
+  //carts.json
   if (!fs.existsSync('carts.json')) {
     fs.writeFileSync('carts.json', JSON.stringify([]));
   }
+
+  //products.json
+  if (!fs.existsSync('products.json')) {
+    fs.writeFileSync('products.json', JSON.stringify([]));
+  }
+
+  //fill products.json with products from efuktshirts.com
+  await createProducts();
 };
 
 const start = async () => {
   try {
-    await initJsonFile();
+    await initJsonFiles();
     console.log('starting server...');
     app.listen(4000, () => {
       console.log('server started on port 4000');

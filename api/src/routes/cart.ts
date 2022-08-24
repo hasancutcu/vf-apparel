@@ -34,8 +34,8 @@ router.post('/api/cart/add/:id', requireCart, async (req, res) => {
       return res.status(400).send('Product not found');
     }
     addToCart(cart_id, product!);
-    const cart = readCart(req.session?.cart_id);
-    return res.status(200).send(cart_id);
+    const cart = readCart(cart_id);
+    return res.status(200).send(cart);
   } catch (error) {
     res.status(500).send(error);
   }
@@ -57,8 +57,8 @@ router.post('/api/cart/remove/:id', requireCart, async (req, res) => {
       return res.status(400).send('Product not found');
     }
     removeFromCart(req.session?.cart_id, product!);
-
-    return res.status(200).send(req.session?.cart_id);
+    const cart = readCart(req.session?.cart_id);
+    return res.status(200).send(cart);
   } catch (error) {
     res.status(500).send(error);
   }

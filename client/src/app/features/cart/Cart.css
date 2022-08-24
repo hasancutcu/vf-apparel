@@ -1,0 +1,20 @@
+.cart-top {
+  border-top-width: 0.3rem !important;
+  border-top-color: #9479ff !important;
+}
+.cart-title {
+  font-size: 2rem !important;
+}
+.cart-footer {
+  margin: 1rem !important;
+  background-color: rgb(230, 228, 231) !important;
+  font-size: 2rem !important;
+}
+
+.cart-footer-total {
+  font-size: 1.5rem !important;
+}
+.cart-footer-sub {
+  font-size: 1rem !important;
+  color: rgb(85, 85, 85);
+}

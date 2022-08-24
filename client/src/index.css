@@ -11,3 +11,79 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.logo {
+  border: 2px solid #9479ff;
+  padding: 5px;
+  font-size: 13px;
+  /* margin-left: 13rem; */
+}
+
+.base-color {
+  background-color: #9479ff !important;
+}
+
+.secondary-color {
+  background-color: rgb(230, 228, 231) !important;
+}
+
+.btn-primary {
+  background-color: #9479ff !important;
+  border-color: rgb(230, 228, 231) !important;
+  border-radius: 0% !important;
+  -webkit-border-radius: 0% !important;
+  -moz-border-radius: 0% !important;
+  -ms-border-radius: 0% !important;
+  -o-border-radius: 0% !important;
+}
+
+.btn-secondary {
+  background-color: rgb(230, 228, 231) !important;
+  color: black !important;
+  border-color: rgb(230, 228, 231) !important;
+  border-radius: 0% !important;
+  -webkit-border-radius: 0% !important;
+  -moz-border-radius: 0% !important;
+  -ms-border-radius: 0% !important;
+  -o-border-radius: 0% !important;
+}
+
+.total-price {
+  font-size: 18px;
+  font: bold;
+}
+.header-item-count {
+  font-size: 1rem !important;
+}
+
+.card-img {
+  margin-top: 1rem !important;
+  padding: 1.5rem 0.75rem !important;
+  /* padding: 5px !important; */
+  border: 1rem !important;
+  background-color: rgb(245, 243, 246) !important;
+}
+
+.product-title {
+  height: 2rem !important;
+  margin-bottom: 2rem !important;
+}
+
+.product-button {
+  height: 5rem !important;
+  font-size: 1rem !important;
+  
+  /* /width: 8.5rem !important; */
+}
+
+.form-select-indicator-color {
+  background-color: #9479ff !important;
+}
+
+.card-border {
+  border-radius: 0% !important;
+  -webkit-border-radius: 0% !important;
+  -moz-border-radius: 0% !important;
+  -ms-border-radius: 0% !important;
+  -o-border-radius: 0% !important;
+}

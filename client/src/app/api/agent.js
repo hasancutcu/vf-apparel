@@ -20,7 +20,9 @@ const Product = {
 }
 
 const Cart = {
-  getCart: () => requests.get('/cart')
+  getCart: () => requests.get('/cart'),
+  addToCart: (productId) => requests.post(`/cart/add/${productId}`),
+  removeFromCart: (productId) => requests.post(`/cart/remove/${productId}`),
 }
 
 const Agent = { Product, Cart }

@@ -13,17 +13,6 @@ const cartSlice = createSlice({
       }, 0)
       state.items = action.payload.items;
     }
-    // ,
-    // addItemToCart(state, action) {
-    //   state.total += action.payload.price;
-    //   state.itemCount += 1;
-    //   state.products = [...state.products, action.payload];
-    // },
-    // removeItemToCart(state, action) {
-    //   state.total -= action.payload.price;
-    //   state.itemCount -= 1;
-    //   state.products = state.products.filter(p => p.id !== action.payload.id);
-    // },
   },
 });
 

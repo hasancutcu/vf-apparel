@@ -1,6 +1,10 @@
 import axios from 'axios';
 
-axios.defaults.baseURL = 'http://localhost:4000/api';
+if (typeof window === "undefined")
+  axios.defaults.baseURL = 'http://ingress-nginx-controller.ingress-nginx.svc.cluster.local';
+else
+  axios.defaults.baseURL = '/';
+
 axios.defaults.withCredentials = true;
 
 const responseBody = (response) => response.data;
@@ -17,20 +21,20 @@ const requests = {
  * @description to use product related api calls
  */
 const Product = {
-  getProdcuts: () => requests.get('/products'),
-  getProductByLowestPrice: () => requests.get('/products', { params: { sort: 'low_price' } }),
-  getProductByHighPrice: () => requests.get('/products', { params: { sort: 'high_price' } }),
-  getProductByTitleAZ: () => requests.get('/products', { params: { sort: 'title_az' } }),
-  getProductByTitleZA: () => requests.get('/products', { params: { sort: 'title_za' } }),
+  getProdcuts: () => requests.get('/api/products'),
+  getProductByLowestPrice: () => requests.get('/api/products', { params: { sort: 'low_price' } }),
+  getProductByHighPrice: () => requests.get('/api/products', { params: { sort: 'high_price' } }),
+  getProductByTitleAZ: () => requests.get('/api/products', { params: { sort: 'title_az' } }),
+  getProductByTitleZA: () => requests.get('/api/products', { params: { sort: 'title_za' } }),
 }
 
 /**
  * @description to use cart related api calls
  */
 const Cart = {
-  getCart: () => requests.get('/cart'),
-  addToCart: (productId) => requests.post(`/cart/add/${productId}`),
-  removeFromCart: (productId) => requests.post(`/cart/remove/${productId}`),
+  getCart: () => requests.get('/api/cart'),
+  addToCart: (productId) => requests.post(`/api/cart/add/${productId}`),
+  removeFromCart: (productId) => requests.post(`/api/cart/remove/${productId}`),
 }
 
 const Agent = { Product, Cart }

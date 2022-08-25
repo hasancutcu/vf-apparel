@@ -1,0 +1,34 @@
+# Client deployment
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: client-depl
+  labels:
+    app: client
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: client
+  template:
+    metadata:
+      labels:
+        app: client
+    spec:
+      containers:
+        - name: client
+          image: hasancutcu/client
+---
+# Client Cluster IP service
+apiVersion: v1
+kind: Service
+metadata:
+  name: client-svc
+spec:
+  selector:
+    app: client
+  ports:
+    - name: client-port
+      protocol: TCP
+      port: 3000
+      targetPort: 3000

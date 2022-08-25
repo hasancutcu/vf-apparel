@@ -1,0 +1,27 @@
+apiVersion: skaffold/v2beta28
+kind: Config
+deploy:
+  kubectl:
+    manifests:
+      - ./infra/k8s/*
+      - ./infra/k8s-dev/* # DEV environment specific manifests
+build:
+  local:
+    push: false
+  artifacts:
+    - image: hasancutcu/api
+      context: api # context is the name of the directory
+      docker:
+        dockerfile: Dockerfile
+      sync:
+        manual:
+          - src: 'src/**/*.ts'
+            dest: .
+    - image: hasancutcu/client
+      context: client # context is the name of the directory
+      docker:
+        dockerfile: Dockerfile
+      sync:
+        manual:
+          - src: '**/*.js'
+            dest: .

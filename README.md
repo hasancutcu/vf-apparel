@@ -13,9 +13,18 @@ VF-Apparel mono-repo includes the following technologies:
 
 ## Installation
 
-VF-Apparel dockerized version requires [docker](https://www.docker.com/) and enabling [Kubernetes](https://kubernetes.io/). 
+VF-Apparel dockerized version requires [docker](https://www.docker.com/) and enabling [Kubernetes](https://kubernetes.io/), if it's not already.
+
+```bash
 
 ![k8](https://user-images.githubusercontent.com/73205794/186581296-1925d047-aee7-406d-9044-d044e5e5ac46.png)
+
+Install [NGINX Ingress Controller](https://kubernetes.github.io/ingress-nginx/deploy/).
+
+```sh
+kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/controller-v1.3.0/deploy/static/provider/cloud/deploy.yaml
+```
+Install [Skaffold](https://skaffold.dev/docs/install/#standalone-binary).
 
 
 Clone the repository

@@ -1,4 +1,6 @@
 # VF-Apparel
+## _💥👉If you want to check dockerized version of this app check 'dev' branch [here](https://github.com/hasancutcu/vf-apparel/tree/dev) which includes latest changes👈💥_
+
 VF-Apparel mono-repo includes the following technologies:
 
 - [node.js]

@@ -13,7 +13,10 @@ VF-Apparel mono-repo includes the following technologies:
 
 ## Installation
 
-VF-Apparel dockerized version requires [docker](https://www.docker.com/) and enabling [Kubernetes](https://kubernetes.io/). k8.png
+VF-Apparel dockerized version requires [docker](https://www.docker.com/) and enabling [Kubernetes](https://kubernetes.io/). 
+
+![k8](https://user-images.githubusercontent.com/73205794/186581296-1925d047-aee7-406d-9044-d044e5e5ac46.png)
+
 
 Clone the repository
 

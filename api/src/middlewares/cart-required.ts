@@ -3,13 +3,21 @@ import { generateCartId } from '../services/cart';
 import fs from 'fs';
 import { ICart } from '../common/cart';
 
+/**
+ * Middleware that checks if there is a cart in the session.
+ * If no session found or session does not include cart id, create a new cart and add it to session.
+ *
+ * @param req request object
+ * @param res response object
+ * @param next next function
+ */
 export const requireCart = (
   req: Request,
   res: Response,
   next: NextFunction
 ) => {
   try {
-    //if nor cart id is provided, generate one
+    //if no cart id is provided, generate one
     if (!req.session?.cart_id) {
       const cart_id = generateCartId();
       req.session = {

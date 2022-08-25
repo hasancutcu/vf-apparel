@@ -2,6 +2,9 @@ import { app } from './app';
 import fs from 'fs';
 import { createProducts } from './db/db';
 
+/**
+ * Initial creation of products.json and carts.json files
+ */
 const initJsonFiles = async () => {
   //carts.json
   if (!fs.existsSync('carts.json')) {
@@ -17,6 +20,9 @@ const initJsonFiles = async () => {
   await createProducts();
 };
 
+/**
+ * Start the server
+ */
 const start = async () => {
   try {
     await initJsonFiles();

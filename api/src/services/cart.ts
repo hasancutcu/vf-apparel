@@ -3,6 +3,11 @@ import { ICart } from '../common/cart';
 import { IProduct } from '../common/product';
 import { v4 as uuidv4 } from 'uuid';
 
+/**
+ * Get cart by cart id from carts.json.
+ * @param cart_id cart id to search in carts.json
+ * @returns cart object if found, else return empty cart
+ */
 const readCart = (cart_id: string): ICart => {
   try {
     const cartsBuffer: Buffer = fs.readFileSync('carts.json');
@@ -14,6 +19,11 @@ const readCart = (cart_id: string): ICart => {
   }
 };
 
+/**
+ * Add product to cart and update cart in carts.json.
+ * @param cart_id cart id is required to know which cart that the product should be added to
+ * @param product product to add to cart
+ */
 const addToCart = (cart_id: string, product: IProduct) => {
   let carts: ICart[] = [];
 
@@ -58,6 +68,11 @@ const addToCart = (cart_id: string, product: IProduct) => {
   fs.writeFileSync('carts.json', JSON.stringify(carts));
 };
 
+/**
+ * Remove product from cart and update cart in carts.json.
+ * @param cart_id cart id is required to know which cart that the product should be removed from
+ * @param product product to remove from cart
+ */
 const removeFromCart = (cart_id: string, product: IProduct) => {
   let carts: ICart[] = [];
 
@@ -75,6 +90,10 @@ const removeFromCart = (cart_id: string, product: IProduct) => {
   fs.writeFileSync('carts.json', JSON.stringify(carts));
 };
 
+/**
+ * Generate a unique cart id.
+ * @returns cart id
+ */
 const generateCartId = (): string => {
   return uuidv4();
 };

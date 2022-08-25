@@ -1,7 +1,9 @@
 import { createSlice } from '@reduxjs/toolkit';
 
 const initialProductState = { products: [], sort: 'high_price' };
-
+/**
+ * Slice tp manage product state
+ */
 const productSlice = createSlice({
   name: 'product',
   initialState: initialProductState,

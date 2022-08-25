@@ -9,6 +9,7 @@ import './CartItem.css';
 const CartItem = ({ item, removeHandler }) => {
   const { product, quantity, amount } = item;
 
+  //sending over the product id
   const removeFromCart = () => {
     removeHandler(product.id);
   }

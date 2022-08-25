@@ -26,11 +26,12 @@ app.use(
     name: 'vfapparel',
     keys: ['key1'],
     signed: false, // to not to encrypt the cookie
-    secure: false, //useSecureCookies, // to make sure the cookie is only sent over https in prod
+    secure: useSecureCookies, // to make sure the cookie is only sent over https in prod
     maxAge: 12 * 60 * 60 * 1000, // 12 hours
   })
 );
 
+//Register routes
 app.use(getProductsRouter);
 app.use(cartRouter);
 

@@ -5,7 +5,9 @@ import { findById } from '../db/db';
 
 const router = express.Router();
 
-//get cart
+/**
+ * @api {get} /cart Get cart
+ */
 router.get('/api/cart', requireCart, async (req, res) => {
   try {
     const cart = readCart(req.session?.cart_id);
@@ -15,7 +17,10 @@ router.get('/api/cart', requireCart, async (req, res) => {
   }
 });
 
-//add item to cart
+/**
+ * @api {post} /cart Add to cart
+ * @apiParam {Number} id Product id
+ */
 router.post('/api/cart/add/:id', requireCart, async (req, res) => {
   try {
     //check product id
@@ -41,7 +46,10 @@ router.post('/api/cart/add/:id', requireCart, async (req, res) => {
   }
 });
 
-//remove item from cart
+/**
+ * @api {post} /cart Remove from cart
+ * @apiParam {Number} id Product id
+ */
 router.post('/api/cart/remove/:id', requireCart, async (req, res) => {
   try {
     //check product id

@@ -10,7 +10,6 @@ const requests = {
   post: (url, body) => axios.post(url, body).then(responseBody),
 }
 
-
 const Product = {
   getProdcuts: () => requests.get('/products'),
   getProductByLowestPrice: () => requests.get('/products', { params: { sort: 'low_price' } }),

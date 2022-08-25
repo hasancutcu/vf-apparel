@@ -12,7 +12,6 @@ const Cart = () => {
   const dispatch = useDispatch();
   const { total, itemCount, items } = useSelector((state) => state.cart);
 
-
   const fetchCart = async () => {
     const data = await agent.Cart.getCart();
     dispatch(cartActions.cartReceived(data));

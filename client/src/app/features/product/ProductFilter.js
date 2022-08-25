@@ -12,7 +12,6 @@ const ProductFilter = ({ selected, sortChangeHandler }) => {
           <option value={'title_za'}>Product Name Z to A</option>
         </Form.Select>
       </Form>
-
     </>
   )
 }

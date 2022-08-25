@@ -8,10 +8,12 @@ VF-Apparel mono-repo includes the following technologies:
 - [Redux]
 - [Axios]
 - [Bootstrap]
+- [Kubernetes]
+- [Skaffold]
 
 ## Installation
 
-VF-Apparel requires [Node.js](https://nodejs.org/) to run.
+VF-Apparel dockerized version requires [docker](https://www.docker.com/) and enabling [Kubernetes](https://kubernetes.io/). k8.png
 
 Clone the repository
 

@@ -23,30 +23,22 @@ Install [NGINX Ingress Controller](https://kubernetes.github.io/ingress-nginx/de
 ```sh
 kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/controller-v1.3.0/deploy/static/provider/cloud/deploy.yaml
 ```
-Install [Skaffold](https://skaffold.dev/docs/install/#standalone-binary).
+Install [Skaffold](https://skaffold.dev/docs/install/#standalone-binary). Skaffold deploys to your local Kubernetes cluster.
 
 
-Clone the repository
+Clone the repository and checkout the dev branch which includes the latest changes related with Kubernetes.
 
 ```sh
 gh repo clone hasancutcu/vf-apparel
+cd vf-apparel
+git checkout dev
 ```
 
-Install the dependencies and devDependencies for the server and start the server.
+Run Skaffold to deploy to your local Kubernetes cluster and watch changes of the code. Make sure your current context is set to the cluster you want to deploy to. In this case it's the local cluster (docker-desktop).
 
 ```sh
-cd vf-apparel/api
-npm i
-npm run dev
-```
-
-Install the dependencies and devDependencies for the client app and start the react app.
-
-```sh
-cd vf-apparel/client
-npm i
-npm run start
+skaffold dev
 ```
 
 ## Usage
-Go to [http://localhost:3000/](http://localhost:3000/)
+Go to [http://localhost/](http://localhost/)

@@ -12,7 +12,7 @@ const Cart = () => {
   const dispatch = useDispatch();
   const { total, itemCount, items } = useSelector((state) => state.cart);
 
-
+  //Fetch cart items from the server and dispatch the action to redux store
   const fetchCart = async () => {
     const data = await agent.Cart.getCart();
     dispatch(cartActions.cartReceived(data));
@@ -20,6 +20,7 @@ const Cart = () => {
 
   useEffect(() => { fetchCart() }, []);
 
+  //removing item from cart and dispatching action to redux store
   const removeHandler = async (productId) => {
     try {
       const newCart = await agent.Cart.removeFromCart(productId);
@@ -30,6 +31,7 @@ const Cart = () => {
 
   }
 
+  //rendering cart items
   const renderedItems = items.length > 0 ? items.map(item =>
     <CartItem key={item.product.id} item={item} removeHandler={removeHandler} />) : null;
 

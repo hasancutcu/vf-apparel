@@ -15,6 +15,7 @@ const ProductGallery = () => {
   const sort = useSelector((state) => state.product.sort);
 
 
+  //Fetch products from the server and dispatch the action to redux store
   const fetchProducts = async () => {
     let data;
     if (sort === 'high_price')
@@ -28,10 +29,12 @@ const ProductGallery = () => {
     dispatch(productActions.productsReceived(data));
   }
 
+  //update the sort state in redux store
   const sortChangeHandler = (event) => {
     dispatch(productActions.sortChanged(event.target.value));
   }
 
+  //adding item to cart and dispatching action to redux store
   const addToCartHandler = async (productId) => {
     try {
       const newCart = await agent.Cart.addToCart(productId);
@@ -43,6 +46,7 @@ const ProductGallery = () => {
 
   }
 
+  //when sort is changed, fetch products again
   useEffect(() => { fetchProducts() }, [sort]);
 
   const renderedProducts = products.length > 0 ? products.map(product =>

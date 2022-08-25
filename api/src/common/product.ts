@@ -1,3 +1,6 @@
+/**
+ * Product interface
+ */
 interface IProduct {
   id: number;
   title: string;

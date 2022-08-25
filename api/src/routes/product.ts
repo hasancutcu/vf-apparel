@@ -4,14 +4,20 @@ import { getProducts } from '../db/db';
 import { sortbyPrice, sortbyTitle } from '../services/product-sort';
 
 const router = express.Router();
-
+/**
+ * @api {get} /products Get all products
+ *
+ * @apiParam {String} sort Sort products by price or title
+ */
 router.get('/api/products', async (req, res) => {
   try {
-    const products: IProduct[] = await getProducts();
+    const products: IProduct[] = await getProducts(); // get all products from db
+
     if (products.length === 0) throw new Error('No products found');
 
     if (!req.query.sort) return res.status(200).send(products);
 
+    // sort products
     const sort = req.query.sort;
     if (sort === 'low_price') {
       const sortedProducts = sortbyPrice(products);

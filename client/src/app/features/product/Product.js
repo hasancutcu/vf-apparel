@@ -8,6 +8,7 @@ import Card from 'react-bootstrap/Card';
 const Product = ({ product, addToCartHandler }) => {
   const { id, price, title, image } = product;
 
+  //sending over the product id
   const addToCart = () => {
     addToCartHandler(id);
   }

@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import Row from 'react-bootstrap/esm/Row'
 import Col from 'react-bootstrap/esm/Col'
 import Container from 'react-bootstrap/esm/Container'
@@ -9,9 +9,11 @@ import './CartItem.css';
 const CartItem = ({ item, removeHandler }) => {
   const { product, quantity, amount } = item;
 
+  //sending over the product id
   const removeFromCart = () => {
     removeHandler(product.id);
   }
+
   if (!quantity)
     return null;
 

@@ -2,9 +2,9 @@ import React from 'react'
 
 const Footer = () => {
   return (
-    <footer className="mt-auto py-5 bg-dark">
+    <footer className="mt-auto py-5 secondary-color">
       <div className="container d-flex justify-content-center">
-        <span className="text-muted">Copyright &copy; Nextena Ltd</span>
+        <span >Copyright &copy; Nextena Ltd</span>
       </div>
     </footer>
   )

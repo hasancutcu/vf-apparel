@@ -26,12 +26,11 @@ kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/cont
 Install [Skaffold](https://skaffold.dev/docs/install/#standalone-binary). Skaffold deploys to your local Kubernetes cluster.
 
 
-Clone the repository and checkout the dev branch which includes the latest changes related with Kubernetes.
+Clone the repository
 
 ```sh
 gh repo clone hasancutcu/vf-apparel
 cd vf-apparel
-git checkout dev
 ```
 
 Run Skaffold to deploy to your local Kubernetes cluster and watch changes of the code. Make sure your current context is set to the cluster you want to deploy to. In this case it's the local cluster (docker-desktop).
